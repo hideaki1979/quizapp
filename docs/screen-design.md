@@ -373,24 +373,22 @@
 | カラム | 型 | 制約 |
 | --- | --- | --- |
 | id | BIGINT | PRIMARY KEY, AUTO INCREMENT |
+| category_id | BIGINT | FK → categories, ON DELETE CASCADE, NOT NULL |
 | question | VARCHAR | NOT NULL |
 | explanation | VARCHAR | NOT NULL |
 | created_at | TIMESTAMP | NOT NULL |
 | updated_at | TIMESTAMP | NOT NULL |
-
-> リレーション上、`category_id`（FK → categories, ON DELETE CASCADE）が必要。
 
 ### options（選択肢）
 
 | カラム | 型 | 制約 |
 | --- | --- | --- |
 | id | BIGINT | PRIMARY KEY, AUTO INCREMENT |
+| quiz_id | BIGINT | FK → quizzes, ON DELETE CASCADE, NOT NULL |
 | content | VARCHAR | NOT NULL |
 | is_correct | BOOLEAN (TINYINT(1)) | NOT NULL, DEFAULT 0（true: 正解 / false: 不正解） |
 | created_at | TIMESTAMP | NOT NULL |
 | updated_at | TIMESTAMP | NOT NULL |
-
-> リレーション上、`quiz_id`（FK → quizzes, ON DELETE CASCADE）が必要。
 
 ### users（管理者）
 
