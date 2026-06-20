@@ -4,7 +4,7 @@
 | --- | --- |
 | プロジェクト名 | La-quizApp |
 | 作成日 | 2026-05-31 |
-| バージョン | 1.1 |
+| バージョン | 1.2 |
 | 関連文書 | [requirements.md](requirements.md)（要件定義書）、`docs/er.drawio` |
 | 技術スタック | Laravel 13 + Inertia.js + React (TypeScript) / MySQL |
 
@@ -354,9 +354,9 @@
 
 ---
 
-## 8. データ定義（講義スキーマ準拠）
+## 8. データ定義（型はベストプラクティス優先）
 
-`docs/er.drawio` および講義スライドの DDL に準拠。マイグレーションは講義側で作成。
+`docs/er.drawio` および講義スライドの DDL を参考にしつつ、型は最適なものを採用（§9 参照）。マイグレーションは本リポジトリ（Laravel 側）で作成する。
 
 ### categories
 
@@ -364,7 +364,7 @@
 | --- | --- | --- |
 | id | BIGINT | PRIMARY KEY, AUTO INCREMENT |
 | name | VARCHAR | NOT NULL |
-| description | VARCHAR | NOT NULL |
+| description | TEXT | NOT NULL |
 | created_at | TIMESTAMP | NOT NULL |
 | updated_at | TIMESTAMP | NOT NULL |
 
@@ -374,8 +374,8 @@
 | --- | --- | --- |
 | id | BIGINT | PRIMARY KEY, AUTO INCREMENT |
 | category_id | BIGINT | FK → categories, ON DELETE CASCADE, NOT NULL |
-| question | VARCHAR | NOT NULL |
-| explanation | VARCHAR | NOT NULL |
+| question | TEXT | NOT NULL |
+| explanation | TEXT | NOT NULL |
 | created_at | TIMESTAMP | NOT NULL |
 | updated_at | TIMESTAMP | NOT NULL |
 
@@ -422,3 +422,4 @@
 | --- | --- | --- | --- |
 | 2026-05-31 | 1.0 | 講義スライドのワイヤーフレーム・遷移図・設計を基に初版作成 | - |
 | 2026-05-31 | 1.1 | クイズ解答画面の項目修正（選択肢毎の正解/不正解・自分が選んだ選択肢）。`is_correct` を boolean(TINYINT(1)) に変更。§9 を命名・型方針（確定）に更新し requirements.md と整合 | - |
+| 2026-06-18 | 1.2 | マイグレーションを本リポジトリ（Laravel 側）で作成する方針に変更。§8 の可変長テキスト列（description / question / explanation）を VARCHAR → TEXT に統一し requirements §4・ベストプラクティスと整合 | - |
