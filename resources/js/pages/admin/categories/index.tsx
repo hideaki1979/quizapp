@@ -36,7 +36,7 @@ export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
         }
 
         // ON DELETE CASCADE により所属クイズ・選択肢も削除（R-06）
-        router.delete(`admin/categories/${deleteTarget.id}`, {
+        router.delete(`/admin/categories/${deleteTarget.id}`, {
             preserveScroll: true,
             onFinish: () => setDeleteTarget(null),
         });
