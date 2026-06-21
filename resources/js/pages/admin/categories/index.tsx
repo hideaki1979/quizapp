@@ -2,6 +2,7 @@ import { Head, Link, router } from '@inertiajs/react';
 import { Eye, Plus, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 
+import { LogoutButton } from '@/components/logout-button';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -57,6 +58,7 @@ export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
                                 新規登録
                             </Link>
                         </Button>
+                        <LogoutButton />
                     </div>
                 </div>
 
