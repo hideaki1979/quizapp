@@ -50,12 +50,14 @@ export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
                 {/* ヘッダー: タイトル + 新規登録（AS-03 へ） */}
                 <div className='flex items-center justify-between'>
                     <h1 className='text-xl font-semibold'>カテゴリー一覧</h1>
-                    <Button asChild>
-                        <Link href="/admin/categories/create">
-                            <Plus className='size-4' />
-                            新規登録
-                        </Link>
-                    </Button>
+                    <div className='flex items-center gap-2'>
+                        <Button asChild>
+                            <Link href="/admin/categories/create">
+                                <Plus className='size-4' />
+                                新規登録
+                            </Link>
+                        </Button>
+                    </div>
                 </div>
 
                 {/* 一覧テーブル */}
@@ -145,7 +147,7 @@ export default function CategoriesIndex({ categories }: CategoriesIndexProps) {
     );
 }
 
-// 既存パターン（dashboard.tsx / profile.tsx）に合わせ、AppLayout のパンくずを定義
+// 既存パターン（profile.tsx）に合わせ、AppLayout のパンくずを定義
 CategoriesIndex.layout = {
     breadcrumbs: [
         {
